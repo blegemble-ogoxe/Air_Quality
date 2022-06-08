@@ -22,6 +22,7 @@
 #include "ff.h"			/* Declarations of FatFs API */
 #include "diskio.h"		/* Declarations of device I/O functions */
 #include "../../user.h"
+#include "../../global.h"
 
 
 /*--------------------------------------------------------------------------
@@ -247,7 +248,7 @@
 
 uint32_t get_fattime(){
     Get_RTC_Data();
-    return ((DWORD)(year - 1980) << 25 | (DWORD)month << 21 | (DWORD)day << 16)
+    return ((DWORD)(year - 1980) << 25 | (DWORD)month << 21 | (DWORD)day << 16);
 }
 
 /* File lock controls */

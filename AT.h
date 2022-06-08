@@ -8,9 +8,6 @@
 #ifndef AT_H
 #define	AT_H
 
-uint8_t phone_book[20][10];
-
-
 void AT_SendString(char* s);
 void AT_SetConfig(void);
 void AT_getTime();
@@ -20,14 +17,8 @@ void AT_getNumbers(uint8_t alert,uint8_t type);
 void AT_clearPhoneBook();
 void AT_writeLogs(uint8_t alert);
 void clearRxData(void);
+char phone_book[20][10];
 
-
-#ifdef	__cplusplus
-extern "C" {
-#endif
-#ifdef	__cplusplus
-}
-#endif
 
 #endif	/* AT_H */
 

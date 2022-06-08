@@ -50,6 +50,9 @@
 #include <stdio.h>
 #include "tmr1.h"
 #include "../user.h"
+#include "../global.h"
+#include "fatfs/fatfs_demo.h"
+#include "string.h"
 
 /**
  Section: File specific functions
@@ -167,8 +170,18 @@ uint16_t TMR1_Counter16BitGet( void )
 
 void __attribute__ ((weak)) TMR1_CallBack(void)
 {
+    uint8_t buf[30];
     // Add your custom callback code here
+    Get_RTC_Data();
     Get_Sensors_Data();
+    //now we need to check if the one of the data reach any threshold
+    checkThresholds();
+    NO2_tmr_cpt++;
+    if(NO2_tmr_cpt >= NO2_freq){        
+        sprintf(buf,"%d-%d-%d %dh%dm%ds %d",day,month,year,hour,minute,second,NO2);
+        SDCardWriteFile("NO2.txt",buf);
+        NO2_tmr_cpt = 0;
+    }
 }
 
 void  TMR1_SetInterruptHandler(void (* InterruptHandler)(void))

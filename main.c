@@ -48,6 +48,9 @@
 #define FCY 3786000UL
 #include "libpic30.h"
 #include "mcc_generated_files/system.h"
+#include "user.h"
+
+#include <math.h>
 
 /*
                          Main application
@@ -58,7 +61,7 @@ int main(void)
     SYSTEM_Initialize();
     while (1)
     {
-        Sleep();        
+        Sleep();     
     }
     return 1; 
 }

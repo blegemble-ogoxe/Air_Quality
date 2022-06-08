@@ -59,7 +59,7 @@ void AT_Call(uint8_t alert){
         sprintf(buf,"ATD%s;\r",phone_book[i]);
         AT_SendString(buf);
         if(alert == 1) sprintf(buf,"AT+CCMXPLAY=\"d:/pre_alerte.wav\",3,0\r",phone_book[i]);
-        else sprintf(buf,"AT+CCMXPLAY=\"d:/alerte.wav\",3,0\r",phone_book[i]);
+        else {sprintf(buf,"AT+CCMXPLAY=\"d:/alerte.wav\",3,0\r",phone_book[i]);}
         
         //We need to check if the voice call has begun
         word = strtok(HAT_rxData,delim);

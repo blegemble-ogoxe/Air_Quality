@@ -59,7 +59,8 @@
 
 #endif
 
-#define TMR1_INTERRUPT_TICKER_FACTOR    75
+         
+//#define TMR1_INTERRUPT_TICKER_FACTOR    75
 
 /**
   Section: Interface Routines

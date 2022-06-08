@@ -233,12 +233,13 @@ void __attribute__ ( ( interrupt, no_auto_psv ) ) _U2RXInterrupt( void )
 
 void __attribute__ ((weak)) UART2_Receive_CallBack(void)
 {
-    if(z2<50){
+    if(z2<105){
         USB_rxData[z2] = UART2_Read();
-        if(USB_rxData[z2] == '\n'){
+        if(USB_rxData[z2] == '\n' && z2 == 104){
                 SetDeviceConfig();
+                clearUSBRxData();
             }       
-        z2++;
+        else z2++;
     }    
     else z2=0;
 }
